@@ -218,11 +218,10 @@ st_write(resultat_sf,
 
 # dataframe
 resultat_df = resultat_sf %>% bind_cols(resultat_sf %>% 
-                                       st_coordinates() %>% 
-                                       as.data.frame()) %>% 
+                                          st_coordinates() %>% 
+                                          as.data.frame()) %>% 
   as.data.frame() %>% 
   select(-geometry) %>% 
   remove_rownames()
 
 write.csv2(resultat_df, paste0(folder_output, "/osm_poi.csv"), row.names = FALSE)
-
